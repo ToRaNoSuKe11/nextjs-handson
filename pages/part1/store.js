@@ -5,6 +5,8 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 
 const styles = {
   container: css`
@@ -30,6 +32,7 @@ const Mui = () => {
         }}
         css={styles.box}
       >
+        <Typography>検索ワード: {keyword}</Typography>
         <TextField
           label="キーワードを入力してください"
           variant="standard"
