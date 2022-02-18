@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import getConfig from 'next/config';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -23,8 +23,13 @@ const fetchData = async (keyword) => {
   return await res.json();
 };
 
-const Shops = ({ shops }) => {
+const Shops = ({ firstViewShops }) => {
   const [keyword, setKeyword] = React.useState('');
+  const [shops, setShops] = React.useState([]);
+
+  useEffect(() => {
+    setShops(firstViewShops);
+  }, [firstViewShops]);
   return (
     <Container component="main" maxWidth="md">
       <Box
@@ -107,7 +112,7 @@ export const getServerSideProps = async (req) => {
 
   return {
     props: {
-      shops: data,
+      firstViewShops: data,
     },
   };
 };
