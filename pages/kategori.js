@@ -18,6 +18,7 @@ import { red } from '@mui/material/colors';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import Link from 'next/link';
 
 
 
@@ -58,12 +59,14 @@ const Shops = ({ firstViewShops }) => {
     setShops(data);
     setKeyword('');
   };
-
+<Link href="/blog/hello-world">
+  <a>Blog Post</a>
+</Link>
   return (
     
     <Container component="main" maxWidth="md">
      <Typography variant="h1"
-                sx={{
+             h1 sx={{
                   backgroundColor: red,
                   marginTop: 3,
                 }}   >
@@ -115,7 +118,7 @@ const Shops = ({ firstViewShops }) => {
           fullWidth
           onClick={() => {
             onSearchClick();
-          }}>ガッツリ系</Button>
+          }}>定食屋</Button>
         </Grid>
         <Grid item xs>
           <Button
@@ -124,7 +127,7 @@ const Shops = ({ firstViewShops }) => {
           fullWidth
           onClick={() => {
             onSearchClick();
-          }}>サッパリ系</Button>
+          }}>ステーキハウス</Button>
         </Grid>
         <Grid item xs>
           <Button
@@ -133,7 +136,7 @@ const Shops = ({ firstViewShops }) => {
           fullWidth
           onClick={() => {
             onSearchClick();
-          }}>デザート系</Button>
+          }}>焼肉</Button>
         </Grid>
         <Grid item xs>
           <Button
@@ -142,15 +145,8 @@ const Shops = ({ firstViewShops }) => {
           fullWidth
           onClick={() => {
             onSearchClick();
-          }}>軽食系</Button>
+          }}>ラーメン</Button>
         </Grid><Grid item xs>
-          <Button
-          variant="contained"
-          margin="normal"
-          fullWidth
-          onClick={() => {
-            onSearchClick();
-          }}>オシャレ系</Button>
         </Grid>
       </Grid>
     </Box>
