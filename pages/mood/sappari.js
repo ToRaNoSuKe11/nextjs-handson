@@ -13,9 +13,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import { red } from '@mui/material/colors';
-import { useRouter } from 'next/router'
 import { css } from '@emotion/react';
-import SvgIcon from '@mui/material/SvgIcon';
+import { useRouter } from 'next/router'
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
 
@@ -30,18 +29,18 @@ const fetchData = async (keyword) => {
 const Home = ({ firstViewShops }) => {
   const [keyword, setKeyword] = React.useState('');
   const [shops, setShops] = React.useState([]);
-  const router = useRouter()
 
   useEffect(() => {
     setShops(firstViewShops);
   }, [firstViewShops]);
 
-  const onSearchClick = async () => {
-    const data = await fetchData(keyword);
+  const onSearchClick = async (searchText) => {
+    const data = await fetchData(searchText);
 
     setShops(data);
     setKeyword('');
   };
+  
   const styles = {
     box: css`
       margin: 0 auto;
@@ -53,12 +52,8 @@ const Home = ({ firstViewShops }) => {
     `,
   };
 
-  
-  
   return (
-    
     <Container component="main" maxWidth="md">
-     
      <Typography
       variant="h1"
       css={styles.toppage}
@@ -106,8 +101,9 @@ const Home = ({ firstViewShops }) => {
           検索
         </Button>
       </Box>
-      <Box sx={{ flexGrow: 1 ,
-                marginTop: 4,
+    <Box sx={{
+      flexGrow: 1 ,
+      marginTop: 4,
     }}>
       <Grid container spacing={3}>
         <Grid item xs>
@@ -115,49 +111,46 @@ const Home = ({ firstViewShops }) => {
           variant="contained"
           margin="normal"
           fullWidth
-          onClick={(e) => {
-            e.preventDefault()
-            router.push('/mood/gatturi');
-          }}>ガッツリ系</Button>
+          onClick={() => {
+            onSearchClick('うどん');
+          }}>
+            うどん
+          </Button>
         </Grid>
         <Grid item xs>
           <Button
           variant="contained"
           margin="normal"
           fullWidth
-          onClick={(e) => {
-            e.preventDefault()
-            router.push('/mood/sappari');
-          }}>サッパリ系</Button>
+          onClick={() => {
+            onSearchClick('海鮮');
+          }}>海鮮</Button>
         </Grid>
         <Grid item xs>
           <Button
           variant="contained"
           margin="normal"
           fullWidth
-          onClick={(e) => {
-            e.preventDefault()
-            router.push('/mood/deza-to');
-          }}>デザート系</Button>
+          onClick={() => {
+            onSearchClick('寿司');
+          }}>寿司</Button>
         </Grid>
         <Grid item xs>
           <Button
           variant="contained"
           margin="normal"
           fullWidth
-          onClick={(e) => {
-            e.preventDefault()
-            router.push('/mood/keisyoku');
-          }}>軽食系</Button>
+          onClick={() => {
+            onSearchClick('日本料理');
+          }}>日本料理</Button>
         </Grid><Grid item xs>
           <Button
           variant="contained"
           margin="normal"
           fullWidth
-          onClick={(e) => {
-            e.preventDefault()
-            router.push('/mood/osyare');
-          }}>オシャレ系</Button>
+          onClick={() => {
+            onSearchClick('そば');
+          }}>そば</Button>
         </Grid>
       </Grid>
     </Box>

@@ -19,6 +19,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 
@@ -59,19 +61,22 @@ const Shops = ({ firstViewShops }) => {
     setShops(data);
     setKeyword('');
   };
-<Link href="/blog/hello-world">
-  <a>Blog Post</a>
-</Link>
+  
+  
+  
   return (
     
     <Container component="main" maxWidth="md">
      <Typography variant="h1"
-             h1 sx={{
+              sx={{
                   backgroundColor: red,
                   marginTop: 3,
-                }}   >
+                  fontFamily:'Raleway'                  
+                }}
+                >
   今日のお食事気分
 </Typography>
+
       
       <Box
         component="form"
@@ -115,8 +120,9 @@ const Shops = ({ firstViewShops }) => {
           
         <Grid item xs>
           <Button
+          justify-content="center"
           variant="contained"
-          margin="normal"
+          margin="auto"
           fullWidth
           onClick={() => {
             onSearchClick();
@@ -124,8 +130,9 @@ const Shops = ({ firstViewShops }) => {
         </Grid>
         <Grid item xs>
           <Button
+          justify-content="center"
           variant="contained"
-          margin="normal"
+          margin="auto"
           fullWidth
           onClick={() => {
             onSearchClick();
@@ -133,8 +140,9 @@ const Shops = ({ firstViewShops }) => {
         </Grid>
         <Grid item xs>
           <Button
+          justify-content="center"
           variant="contained"
-          margin="normal"
+          margin="auto"
           fullWidth
           onClick={() => {
             onSearchClick();
@@ -142,13 +150,22 @@ const Shops = ({ firstViewShops }) => {
         </Grid>
         <Grid item xs>
           <Button
+          justify-content="center"
           variant="contained"
-          margin="normal"
+          margin="auto"
           fullWidth
           onClick={() => {
             onSearchClick();
           }}>ラーメン</Button>
         </Grid><Grid item xs>
+        <Button
+          justify-content="center"
+          variant="contained"
+          margin="auto"
+          fullWidth
+          onClick={() => {
+            onSearchClick();
+          }}>ハンバーグ</Button>
         </Grid>
       </Grid>
     </Box>
