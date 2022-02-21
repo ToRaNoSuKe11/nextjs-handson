@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import getConfig from 'next/config';
 import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -14,24 +11,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
+import Grid from '@mui/material/Grid';
 import { red } from '@mui/material/colors';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-
-
-
-
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-
 
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
@@ -44,7 +25,7 @@ const fetchData = async (keyword) => {
   return await res.json();
 };
 
-const Shops = ({ firstViewShops }) => {
+const Home = ({ firstViewShops }) => {
   const [keyword, setKeyword] = React.useState('');
   const [shops, setShops] = React.useState([]);
 
@@ -60,16 +41,17 @@ const Shops = ({ firstViewShops }) => {
   };
 
   return (
-    
     <Container component="main" maxWidth="md">
-     <Typography variant="h1"
-                sx={{
-                  backgroundColor: red,
-                  marginTop: 3,
-                }}   >
-  今日のお食事気分
-</Typography>
-      
+     <Typography
+      variant="h1"
+      sx={{
+        backgroundColor: red,
+        marginTop: 3,
+      }}
+     >
+      今日のお食事気分
+    </Typography>
+
       <Box
         component="form"
         noValidate
@@ -105,9 +87,7 @@ const Shops = ({ firstViewShops }) => {
       <Box sx={{ flexGrow: 1 ,
                 marginTop: 4,
     }}>
-      <Grid container spacing={3}
-           
-      >
+      <Grid container spacing={3}>
         <Grid item xs>
           <Button
           variant="contained"
@@ -195,7 +175,7 @@ const Shops = ({ firstViewShops }) => {
     </Box>
   </Container>
   );
-};
+}
 
 export const getServerSideProps = async (req) => {
   const data = await fetchData(req.query.keyword);
@@ -207,5 +187,4 @@ export const getServerSideProps = async (req) => {
   };
 };
 
-export default Shops;
-
+export default Home;

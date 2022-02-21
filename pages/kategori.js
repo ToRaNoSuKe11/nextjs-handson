@@ -111,6 +111,8 @@ const Shops = ({ firstViewShops }) => {
       <Grid container spacing={3}
            
       >
+        
+          
         <Grid item xs>
           <Button
           variant="contained"
