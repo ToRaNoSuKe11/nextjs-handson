@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import getConfig from 'next/config';
 import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -14,22 +11,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { red } from '@mui/material/colors';
-
-
-
-
-
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-
 
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
@@ -56,18 +37,33 @@ const Shops = ({ firstViewShops }) => {
     setShops(data);
     setKeyword('');
   };
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
+  
+  
 
   return (
-    
+    <Box sx={{ flexGrow: 1 
+    }}>
+      <Grid container spacing={3}>
+        <Grid item xs>
+          <Button>xs</Button>
+        </Grid>
+        <Grid item xs>
+          <Button>xs=6</Button>
+        </Grid>
+        <Grid item xs>
+          <Button>xs</Button>
+        </Grid>
+      </Grid>
+    </Box>
+  );
     <Container component="main" maxWidth="md">
-     <Typography variant="h1"
-                sx={{
-                  backgroundColor: red,
-                  
-                }}   >
-  今日のお食事気分
-</Typography>
-      
       <Box
         component="form"
         noValidate
@@ -100,58 +96,6 @@ const Shops = ({ firstViewShops }) => {
           検索
         </Button>
       </Box>
-      <Box sx={{ flexGrow: 1 ,
-                marginTop: 4,
-    }}>
-      <Grid container spacing={3}
-           
-      >
-        <Grid item xs>
-          <Button
-          variant="contained"
-          margin="normal"
-          fullWidth
-          onClick={() => {
-            onSearchClick();
-          }}>ガッツリ系</Button>
-        </Grid>
-        <Grid item xs>
-          <Button
-          variant="contained"
-          margin="normal"
-          fullWidth
-          onClick={() => {
-            onSearchClick();
-          }}>サッパリ系</Button>
-        </Grid>
-        <Grid item xs>
-          <Button
-          variant="contained"
-          margin="normal"
-          fullWidth
-          onClick={() => {
-            onSearchClick();
-          }}>デザート系</Button>
-        </Grid>
-        <Grid item xs>
-          <Button
-          variant="contained"
-          margin="normal"
-          fullWidth
-          onClick={() => {
-            onSearchClick();
-          }}>軽食系</Button>
-        </Grid><Grid item xs>
-          <Button
-          variant="contained"
-          margin="normal"
-          fullWidth
-          onClick={() => {
-            onSearchClick();
-          }}>オシャレ系</Button>
-        </Grid>
-      </Grid>
-    </Box>
     <Box
       component="form"
       noValidate
@@ -192,7 +136,7 @@ const Shops = ({ firstViewShops }) => {
       </List>
     </Box>
   </Container>
-  );
+  
 };
 
 export const getServerSideProps = async (req) => {
@@ -206,4 +150,3 @@ export const getServerSideProps = async (req) => {
 };
 
 export default Shops;
-
