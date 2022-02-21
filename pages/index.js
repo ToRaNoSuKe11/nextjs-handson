@@ -47,6 +47,7 @@ const Home = ({ firstViewShops }) => {
       sx={{
         backgroundColor: red,
         marginTop: 3,
+        Color: red,
       }}
      >
       今日のお食事気分
@@ -90,6 +91,7 @@ const Home = ({ firstViewShops }) => {
       <Grid container spacing={3}>
         <Grid item xs>
           <Button
+          href = 'http://localhost:3000/kategori'
           variant="contained"
           margin="normal"
           fullWidth
@@ -160,10 +162,10 @@ const Home = ({ firstViewShops }) => {
                   primary={`${shop.genre.name} ${shop.name}`}
                   secondary={
                     <>
-                      <Typography variant="body1" component="span">
-                        {`${shop.catch} ${shop.shop_detail_memo}`}
+                      <Typography variant="body1">
+                       {shop.address}
                       </Typography>
-                      <Typography variant="caption">{shop.address}</Typography>
+                      <Typography variant="caption">{shop.budget.average}</Typography>
                     </>
                   }
                 />
