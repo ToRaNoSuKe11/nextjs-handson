@@ -14,7 +14,10 @@ import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import { red } from '@mui/material/colors';
 import { css } from '@emotion/react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import SvgIcon from '@mui/material/SvgIcon';
+import Link from '@mui/material/Link';
+
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
 
@@ -52,8 +55,31 @@ const Home = ({ firstViewShops }) => {
     `,
   };
   
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
+
+  const router = useRouter();
+
   return (
     <Container component="main" maxWidth="md">
+      <Box>
+        <HomeIcon 
+        onClick={(e) => {
+          e.preventDefault()
+          router.push('/');
+        }}
+        sx={{ fontSize: 40,
+        display: 'flex',
+        float: 'right',
+        m: 2,
+        }}/>
+      </Box>
+
      <Typography
       variant="h1"
       css={styles.toppage}
@@ -61,12 +87,11 @@ const Home = ({ firstViewShops }) => {
         display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          bgcolor: 'yellow',
           width: 1,
-          fontFamily: 'Caveat',
+          fontFamily: 'Anton',
       }}
      >
-      今日のお食事気分
+      Thoroughly
     </Typography>
 
       <Box
@@ -84,7 +109,6 @@ const Home = ({ firstViewShops }) => {
           label="キーワードを入力してください"
           variant="standard"
           margin="normal"
-          fullWidth
           value={keyword}
           onChange={(event) => {
             setKeyword(event.target.value);
@@ -93,7 +117,6 @@ const Home = ({ firstViewShops }) => {
         <Button
           variant="contained"
           margin="normal"
-          fullWidth
           onClick={() => {
             onSearchClick();
           }}
@@ -165,6 +188,7 @@ const Home = ({ firstViewShops }) => {
       <List>
         {shops.map((shop) => {
           return (
+            <Link href={shop.urls.pc} underline="none">
             <ListItem key={shop.id}>
               <ListItemButton
                 onClick={() => {
@@ -187,6 +211,8 @@ const Home = ({ firstViewShops }) => {
                 />
               </ListItemButton>
             </ListItem>
+          </Link>
+            
           );
         })}
       </List>

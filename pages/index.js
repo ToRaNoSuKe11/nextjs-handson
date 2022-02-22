@@ -12,10 +12,13 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
-import { red } from '@mui/material/colors';
+import { brown, red } from '@mui/material/colors';
 import { useRouter } from 'next/router'
 import { css } from '@emotion/react';
+import { Icon } from '@mui/material';
 import SvgIcon from '@mui/material/SvgIcon';
+import Link from '@mui/material/Link';
+
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
 
@@ -53,6 +56,14 @@ const Home = ({ firstViewShops }) => {
     `,
   };
 
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
+  
   
   
   return (
@@ -66,12 +77,13 @@ const Home = ({ firstViewShops }) => {
         display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          bgcolor: 'yellow',
+          bgcolor: '#CCCCFF',
           width: 1,
-          fontFamily: 'Caveat',
+          fontFamily: 'Kokoro',
+          marginTop: 5,
       }}
      >
-      今日のお食事気分
+      まよいめし
     </Typography>
 
       <Box
@@ -89,7 +101,6 @@ const Home = ({ firstViewShops }) => {
           label="キーワードを入力してください"
           variant="standard"
           margin="normal"
-          fullWidth
           value={keyword}
           onChange={(event) => {
             setKeyword(event.target.value);
@@ -98,7 +109,6 @@ const Home = ({ firstViewShops }) => {
         <Button
           variant="contained"
           margin="normal"
-          fullWidth
           onClick={() => {
             onSearchClick();
           }}
@@ -115,6 +125,9 @@ const Home = ({ firstViewShops }) => {
           variant="contained"
           margin="normal"
           fullWidth
+          sx={{
+            bgcolor: brown,
+          }}
           onClick={(e) => {
             e.preventDefault()
             router.push('/mood/gatturi');
@@ -125,6 +138,9 @@ const Home = ({ firstViewShops }) => {
           variant="contained"
           margin="normal"
           fullWidth
+          sx={{
+            bgcolor: "#99FF00",
+          }}
           onClick={(e) => {
             e.preventDefault()
             router.push('/mood/sappari');
@@ -135,6 +151,9 @@ const Home = ({ firstViewShops }) => {
           variant="contained"
           margin="normal"
           fullWidth
+          sx={{
+            bgcolor: "#FFCCFF",
+          }}
           onClick={(e) => {
             e.preventDefault()
             router.push('/mood/deza-to');
@@ -145,6 +164,9 @@ const Home = ({ firstViewShops }) => {
           variant="contained"
           margin="normal"
           fullWidth
+          sx={{
+            bgcolor: "#FFFF66",
+          }}
           onClick={(e) => {
             e.preventDefault()
             router.push('/mood/keisyoku');
@@ -154,6 +176,9 @@ const Home = ({ firstViewShops }) => {
           variant="contained"
           margin="normal"
           fullWidth
+          sx={{
+            bgcolor: "#CC99FF",
+          }}
           onClick={(e) => {
             e.preventDefault()
             router.push('/mood/osyare');
@@ -174,6 +199,7 @@ const Home = ({ firstViewShops }) => {
       <List>
         {shops.map((shop) => {
           return (
+            <Link href={shop.urls.pc} underline="none">
             <ListItem key={shop.id}>
               <ListItemButton
                 onClick={() => {
@@ -196,6 +222,8 @@ const Home = ({ firstViewShops }) => {
                 />
               </ListItemButton>
             </ListItem>
+          </Link>
+            
           );
         })}
       </List>
