@@ -112,6 +112,8 @@ const Home = ({ firstViewShops }) => {
           variant="standard"
           margin="normal"
           value={keyword}
+          sx={{
+            width: 600,}}
           onChange={(event) => {
             setKeyword(event.target.value);
           }}
@@ -119,6 +121,10 @@ const Home = ({ firstViewShops }) => {
         <Button
           variant="contained"
           margin="normal"
+          sx={{
+            width: 150,
+            //backgroundImage:'https://img.cpcdn.com/recipes/4180509/750x500cq60/4c352fc953f6971333fb082ea3f89a9a?p=1479303518',
+          }}
           onClick={() => {
             onSearchClick();
           }}

@@ -114,7 +114,7 @@ const Home = ({ firstViewShops }) => {
           margin="normal"
           sx={{
             width: 150,
-            backgroundImage:'https://img.cpcdn.com/recipes/4180509/750x500cq60/4c352fc953f6971333fb082ea3f89a9a?p=1479303518',
+            //backgroundImage:'https://img.cpcdn.com/recipes/4180509/750x500cq60/4c352fc953f6971333fb082ea3f89a9a?p=1479303518',
           }}
           onClick={() => {
             onSearchClick();
