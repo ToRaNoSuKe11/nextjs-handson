@@ -36,7 +36,7 @@ const Home = ({ firstViewShops }) => {
   const router = useRouter()
 
   useEffect(() => {
-    setShops(firstViewShops);
+    /*setShops(firstViewShops);*/
   }, [firstViewShops]);
 
   const onSearchClick = async () => {
@@ -101,7 +101,10 @@ const Home = ({ firstViewShops }) => {
           label="キーワードを入力してください"
           variant="standard"
           margin="normal"
+          fullWidth
           value={keyword}
+          sx={{
+            width: 600,}}
           onChange={(event) => {
             setKeyword(event.target.value);
           }}
@@ -109,6 +112,10 @@ const Home = ({ firstViewShops }) => {
         <Button
           variant="contained"
           margin="normal"
+          sx={{
+            width: 150,
+            backgroundImage:'https://img.cpcdn.com/recipes/4180509/750x500cq60/4c352fc953f6971333fb082ea3f89a9a?p=1479303518',
+          }}
           onClick={() => {
             onSearchClick();
           }}
@@ -196,11 +203,12 @@ const Home = ({ firstViewShops }) => {
         alignItems: 'center',
       }}
     >
-      <List>
+      <List
+           fullWidth>
         {shops.map((shop) => {
           return (
-            <Link href={shop.urls.pc} underline="none">
-            <ListItem key={shop.id}>
+            <Link href={shop.urls.pc} underline="none" key={shop.id}>
+            <ListItem >
               <ListItemButton
                 onClick={() => {
                   // TODO: goto shop detail

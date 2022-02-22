@@ -12,7 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
-import { red } from '@mui/material/colors';
+//import { red } from '@mui/material/colors';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 import SvgIcon from '@mui/material/SvgIcon';
@@ -189,8 +189,8 @@ const Home = ({ firstViewShops }) => {
       <List>
         {shops.map((shop) => {
           return (
-            <Link href={shop.urls.pc} underline="none">
-            <ListItem key={shop.id}>
+            <Link href={shop.urls.pc} underline="none"key={shop.id}>
+            <ListItem >
               <ListItemButton
                 onClick={() => {
                   // TODO: goto shop detail
