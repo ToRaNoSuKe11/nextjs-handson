@@ -36,7 +36,7 @@ const Home = ({ firstViewShops }) => {
   const [shops, setShops] = React.useState([]);
 
   useEffect(() => {
-    setShops(firstViewShops);
+    /*setShops(firstViewShops);*/
   }, [firstViewShops]);
 
   const onSearchClick = async (searchText) => {
